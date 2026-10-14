@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- SEO Meta Tags for Search Engines -->
+<title>Free Online Trigonometry Calculator & Solver - Sin, Cos, Tan</title>
+<meta name="description" content="Use this free online trigonometry calculator to instantly solve triangle sides, angles, trig expressions, equations, and check identities with step-by-step working.">
+<meta name="keywords" content="trigonometry calculator, triangle solver, sin cos tan calculator, trig identities, right triangle calculator">
+<link rel="canonical" href="https://trigonometrycalculator.netlify.app/">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<div class="wrap">
+  <header>
+    <h1>Free Online Trigonometry Calculator</h1>
+    <p class="sub">Type a problem and get the answer with the working. It runs on this page alone, with no AI model and no internet connection.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Solver type">
+    <button class="tab" role="tab" data-tab="evaluate" aria-selected="true">Evaluate</button>
+    <button class="tab" role="tab" data-tab="triangles" aria-selected="false">Triangles</button>
+    <button class="tab" role="tab" data-tab="equations" aria-selected="false">Equations</button>
+    <button class="tab" role="tab" data-tab="identities" aria-selected="false">Identities</button>
+  </nav>
+
+  <!-- EVALUATE -->
+  <section class="panel" id="panel-evaluate">
+    <div class="card" data-form>
+      <h2>Evaluate an expression</h2>
+      <div class="row">
+        <span class="hint">Angles in</span>
+        <div class="seg" role="group" aria-label="Angle unit">
+          <button type="button" data-mode="deg" aria-pressed="true">Degrees</button>
+          <button type="button" data-mode="rad" aria-pressed="false">Radians</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="expr">Expression</label>
+        <input type="text" id="expr" value="sin(30°) + cos(60°)" autocomplete="off" spellcheck="false">
+      </div>
+      <p class="hint">Use sin, cos, tan, sec, csc, cot, asin, acos, atan, sqrt, pi, ^ and brackets. Write 30° or just 30 in degree mode.</p>
+      <div class="row">
+        <button class="btn" data-solve id="solve-expr">Solve</button>
+        <span class="chip" data-ex-expr="sin(150°)" data-ex-mode="deg">sin(150°)</span>
+        <span class="chip" data-ex-expr="tan(225°)" data-ex-mode="deg">tan(225°)</span>
+        <span class="chip" data-ex-expr="cos(pi/3)" data-ex-mode="rad">cos(pi/3)</span>
+        <span class="chip" data-ex-expr="asin(0.5)" data-ex-mode="deg">asin(0.5)</span>
+        <span class="chip" data-ex-expr="sin(x)" data-ex-mode="deg" hidden>x</span>
+      </div>
+    </div>
+    <div id="out-expr"></div>
+    <div class="card">
+      <h2>Special angles</h2>
+      <div class="scroll">
+        <table>
+          <tr><th>Angle</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr>
+          <tr><th>sin</th><td>0</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td></tr>
+          <tr><th>cos</th><td>1</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td></tr>
+          <tr><th>tan</th><td>0</td><td>√3/3</td><td>1</td><td>√3</td><td>undefined</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIANGLES -->
+  <section class="panel" id="panel-triangles" hidden>
+    <div class="row">
+      <div class="seg" role="group" aria-label="Triangle type">
+        <button type="button" data-tri="right" aria-pressed="true">Right triangle</button>
+        <button type="button" data-tri="any" aria-pressed="false">Any triangle</button>
+      </div>
+    </div>
+
+    <div class="card" data-form id="form-right">
+      <h2>Right triangle</h2>
+      <p class="hint">Angle C is 90°. Side c is the hypotenuse. Enter exactly two values, and at least one must be a side. Angles are in degrees.</p>
+      <div class="grid">
+        <div class="field"><label for="r-a">Side a</label><input type="text" id="r-a" inputmode="decimal" value="3" autocomplete="off"></div>
+        <div class="field"><label for="r-b">Side b</label><input type="text" id="r-b" inputmode="decimal" value="4" autocomplete="off"></div>
+        <div class="field"><label for="r-c">Side c</label><input type="text" id="r-c" inputmode="decimal" autocomplete="off"></div>
+        <div class="field"><label for="r-A">Angle A °</label><input type="text" id="r-A" inputmode="decimal" autocomplete="off"></div>
+        <div class="field"><label for="r-B">Angle B °</label><input type="text" id="r-B" inputmode="decimal" autocomplete="off"></div>
+      </div>
+      <div class="row">
+        <button class="btn" data-solve id="solve-right">Solve</button>
+        <button class="btn ghost" type="button" data-clear="r-a,r-b,r-c,r-A,r-B">Clear</button>
+        <span class="chip" data-fill="r-a=3,r-b=4">3, 4</span>
+        <span class="chip" data-fill="r-c=6,r-A=70" title="Ladder 6 long at 70°">c=6, A=70°</span>
+        <span class="chip" data-fill="r-b=50,r-A=35" title="Height of a tower from 50 away at 35°">b=50, A=35°</span>
+      </div>
+    </div>
+
+    <div class="card" data-form id="form-any" hidden>
+      <h2>Any triangle</h2>
+      <p class="hint">Side a is opposite angle A, and so on. Enter exactly three values, at least one a side. Angles are in degrees.</p>
+      <div class="grid">
+        <div class="field"><label for="g-a">Side a</label><input type="text" id="g-a" inputmode="decimal" value="8" autocomplete="off"></div>
+        <div class="field"><label for="g-b">Side b</label><input type="text" id="g-b" inputmode="decimal" value="10" autocomplete="off"></div>
+        <div class="field"><label for="g-c">Side c</label><input type="text" id="g-c" inputmode="decimal" autocomplete="off"></div>
+        <div class="field"><label for="g-A">Angle A °</label><input type="text" id="g-A" inputmode="decimal" value="40" autocomplete="off"></div>
+        <div class="field"><label for="g-B">Angle B °</label><input type="text" id="g-B" inputmode="decimal" autocomplete="off"></div>
+        <div class="field"><label for="g-C">Angle C °</label><input type="text" id="g-C" inputmode="decimal" autocomplete="off"></div>
+      </div>
+      <div class="row">
+        <button class="btn" data-solve id="solve-any">Solve</button>
+        <button class="btn ghost" type="button" data-clear="g-a,g-b,g-c,g-A,g-B,g-C">Clear</button>
+        <span class="chip" data-fill="g-a=5,g-b=7,g-c=10" title="Three sides">SSS 5, 7, 10</span>
+        <span class="chip" data-fill="g-b=8,g-c=11,g-A=40" title="Two sides and the angle between them">SAS</span>
+        <span class="chip" data-fill="g-A=40,g-B=65,g-c=9" title="Two angles and a side">ASA</span>
+        <span class="chip" data-fill="g-a=8,g-b=10,g-A=40" title="Can give two triangles">SSA (two answers)</span>
+      </div>
+    </div>
+    <div id="out-tri"></div>
+  </section>
+
+  <!-- EQUATIONS -->
+  <section class="panel" id="panel-equations" hidden>
+    <div class="card" data-form>
+      <h2>Solve a trig equation</h2>
+      <p class="hint">Form: a · f(b·x + c) = k, with x in degrees.</p>
+      <div class="grid">
+        <div class="field"><label for="e-a">a</label><input type="text" id="e-a" inputmode="decimal" value="2" autocomplete="off"></div>
+        <div class="field"><label for="e-f">f</label>
+          <select id="e-f"><option value="sin">sin</option><option value="cos">cos</option><option value="tan">tan</option></select></div>
+        <div class="field"><label for="e-b">b</label><input type="text" id="e-b" inputmode="decimal" value="1" autocomplete="off"></div>
+        <div class="field"><label for="e-c">c °</label><input type="text" id="e-c" inputmode="decimal" value="0" autocomplete="off"></div>
+        <div class="field"><label for="e-k">k</label><input type="text" id="e-k" inputmode="decimal" value="1" autocomplete="off"></div>
+      </div>
+      <div class="grid">
+        <div class="field"><label for="e-lo">Find x from °</label><input type="text" id="e-lo" inputmode="decimal" value="0" autocomplete="off"></div>
+        <div class="field"><label for="e-hi">to °</label><input type="text" id="e-hi" inputmode="decimal" value="360" autocomplete="off"></div>
+      </div>
+      <p class="m" id="e-preview"></p>
+      <div class="row">
+        <button class="btn" data-solve id="solve-eq">Solve</button>
+        <span class="chip" data-eq="1,sin,1,0,0.5">sin x = 1/2</span>
+        <span class="chip" data-eq="2,cos,1,0,-1.4142135624">2cos x = −√2</span>
+        <span class="chip" data-eq="1,tan,2,0,1">tan 2x = 1</span>
+        <span class="chip" data-eq="1,sin,1,30,0.5">sin(x + 30°) = 1/2</span>
+      </div>
+    </div>
+    <div id="out-eq"></div>
+  </section>
+
+  <!-- IDENTITIES -->
+  <section class="panel" id="panel-identities" hidden>
+    <div class="card" data-form>
+      <h2>Check an identity</h2>
+      <p class="hint">Enter both sides using x. The page tests them at many angles. A pass is strong evidence, not a formal proof.</p>
+      <div class="row">
+        <span class="hint">Angles in</span>
+        <div class="seg" role="group" aria-label="Angle unit for identities">
+          <button type="button" data-mode="deg" aria-pressed="true">Degrees</button>
+          <button type="button" data-mode="rad" aria-pressed="false">Radians</button>
+        </div>
+      </div>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="field"><label for="i-l">Left side</label><input type="text" id="i-l" value="sin(x)^2 + cos(x)^2" autocomplete="off" spellcheck="false"></div>
+        <div class="field"><label for="i-r">Right side</label><input type="text" id="i-r" value="1" autocomplete="off" spellcheck="false"></div>
+      </div>
+      <div class="row">
+        <button class="btn" data-solve id="solve-id">Check</button>
+        <span class="chip" data-id="tan(x)|sin(x)/cos(x)">tan = sin/cos</span>
+        <span class="chip" data-id="sin(2x)|2 sin(x) cos(x)">sin 2x</span>
+        <span class="chip" data-id="cos(2x)|1 - 2 sin(x)^2">cos 2x</span>
+        <span class="chip" data-id="(1 - cos(x))/sin(x)|tan(x/2)">half-angle</span>
+        <span class="chip" data-id="sin(x)|cos(x)">sin = cos (false)</span>
+      </div>
+    </div>
+    <div id="out-id"></div>
+  </section>
+</div>
+
+<!-- Extra SEO Content Section -->
+<section class="wrap" style="margin-top: 30px; font-size: 14px; color: var(--muted);">
+  <h2>About Our Free Trigonometry Calculator</h2>
+  <p>Welcome to the ultimate online <strong>trigonometry calculator</strong> and math solver. Whether you need to find the sine, cosine, or tangent of an angle, solve a complex right-angled triangle using Pythagorean theorem, or check advanced trig identities, this tool provides instant answers with step-by-step working.</p>
+  <p>Designed for students, teachers, and engineers, our tool operates entirely in your browser without requiring downloads or internet connectivity once loaded.</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
